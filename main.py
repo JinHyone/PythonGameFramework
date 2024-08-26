@@ -7,7 +7,7 @@ FPS: int = 60
 
 init()
 
-GameDisplay = display.set_mode((720, 1080))
+GameDisplay = display.set_mode((1080, 720))
 GameDisplay.fill(THECOLORS['white'])
 
 display.set_caption('Game')
