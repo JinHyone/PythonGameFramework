@@ -1,7 +1,6 @@
 from sys import exit
 from typing import Dict
 
-import pygame
 from pygame import event, quit, QUIT, KEYDOWN, KEYUP
 
 
