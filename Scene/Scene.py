@@ -3,7 +3,7 @@ from numpy import array, append, delete
 from numpy.typing import NDArray
 
 from Objects.Actor import Actor
-
+from Managers.TimeManager import TimeManager
 
 class SCENE_TYPE(Enum):
 	NONE       = auto()
@@ -13,17 +13,22 @@ class SCENE_TYPE(Enum):
 
 # 게임이 진행되는 메인 공간
 class Scene:
-	def __init__(self):
+	type: SCENE_TYPE
+
+	def __init__(self, scene_type: SCENE_TYPE):
 		self.actors: NDArray[Actor] = array([])
-		self.sceneType: SCENE_TYPE = SCENE_TYPE.NONE
+		self.type: SCENE_TYPE = scene_type
+
+	def init(self):
+		pass
 
 	def update(self):
 		for actor in self.actors:
 			actor.update()
 
-	def render(self):
+	def render(self, display):
 		for actor in self.actors:
-			actor.render()
+			actor.render(display)
 
 	def add_actor(self, actor: Actor):
 		self.actors = append(self.actors, actor)

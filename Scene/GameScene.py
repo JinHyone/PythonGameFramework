@@ -1,16 +1,16 @@
-from Scene import Scene
+from Scene import Scene, SCENE_TYPE
 from Objects.Actor import Actor
 
 
 class GameScene(Scene):
 	def __init__(self):
-		super().__init__()
+		super().__init__(SCENE_TYPE.DEV_SCENE)
 
 	def update(self):
 		super().update()
 
-	def render(self):
-		super().update()
+	def render(self, display):
+		super().render(display)
 
 	def add_actor(self, actor: Actor):
 		super().add_actor(actor)

@@ -20,7 +20,6 @@ def GameMain():
 
 
 while True:
-	display.update()
 	InputManager.GI().update()
 	TimeManager.GI().update()
 
@@ -28,4 +27,5 @@ while True:
 		print('fps: {} delta: {}'.format(TimeManager.GI().getFrame(), TimeManager.GI().getDelta()))
 
 	GameMain()
+	display.update()
 

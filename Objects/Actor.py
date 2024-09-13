@@ -9,11 +9,18 @@ class ACTOR_TYPE(Enum):
 
 # Actor(씬에 배치되는 가장 기본이 되는 오브젝트) 클래스 추상화
 class Actor:
-	def __init__(self):
-		self.pos: Vector3 = Vector3()
+	pos: Vector3
+	type: ACTOR_TYPE
+
+	def __init__(self, pos: Vector3, actor_type: ACTOR_TYPE):
+		self.pos = pos
+		self.type = actor_type
+
+	def init(self):
+		pass
 
 	def update(self):
 		pass
 
-	def render(self):
+	def render(self, display):
 		pass
