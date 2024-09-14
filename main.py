@@ -18,11 +18,14 @@ GameDisplay.fill(THECOLORS['white'])
 
 display.set_caption('Game')
 
-background = pygame.transform.scale(pygame.image.load('E:/PythonProject/HanyangGameProject/Resources/py_back_HD.jpg'), (display_width, display_height))
+background = pygame.transform.scale(pygame.image.load('E:/PythonProject/HanyangGameProject/Resources/py_back_HD.jpg'),
+                                    (display_width, display_height))
+fi = pygame.image.load('E:/PythonProject/HanyangGameProject/Resources/fi.png')
 
 
 def GameMain():
 	GameDisplay.blit(background, (0, 0))
+	GameDisplay.blit(fi, (500, 100))
 	display.flip()
 
 
