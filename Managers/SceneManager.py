@@ -1,18 +1,19 @@
 from pygame import Vector3
+from typing import Optional
 
 from Scene.Scene import Scene, SCENE_TYPE
 from Scene.Game.GameScene import GameScene
 
 
 class SceneManager:
-	scene: Scene | None = None
+	scene: Optional[Scene] = None
 	sceneType: SCENE_TYPE = None
 	instance: 'SceneManager' = None
 	camera_pos: Vector3 = Vector3(0, 0, 0)
 
 	@staticmethod
 	# GetInstance Method 싱글톤
-	def GI() -> 'SceneManager' | None:
+	def GI() -> Optional['SceneManager']:
 		if SceneManager.instance is None:
 			SceneManager.instance = SceneManager()
 			SceneManager.instance.init()
@@ -31,11 +32,12 @@ class SceneManager:
 			self.scene.render(display)
 
 	def clear(self):
-		del self.scene
-		self.scene = None
+		if self.scene is not None:
+			del self.scene
+			self.scene = None
 
 	def changeScene(self, scene_type: SCENE_TYPE) -> Scene:
-		newScene: Scene = None
+		newScene: Optional[Scene] = None
 
 		match scene_type:
 			case SCENE_TYPE.GAME_SCENE:
@@ -57,5 +59,3 @@ class SceneManager:
 
 	def setCameraPos(self, pos: Vector3):
 		self.camera_pos = pos
-
-	# cpp로 만든 프레임워크의 SceneManager 따라 만들기

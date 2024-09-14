@@ -8,9 +8,11 @@ class GameScene(Scene):
 
 	def update(self):
 		super().update()
+		print('game scene update')
 
 	def render(self, display):
 		super().render(display)
+		print('game scene render')
 
 	def add_actor(self, actor: Actor):
 		super().add_actor(actor)
