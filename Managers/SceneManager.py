@@ -1,7 +1,7 @@
 from pygame import Vector3
 
 from Scene.Scene import Scene, SCENE_TYPE
-from Scene.GameScene import GameScene
+from Scene.Game.GameScene import GameScene
 
 
 class SceneManager:

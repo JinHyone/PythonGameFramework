@@ -1,4 +1,4 @@
-from Scene import Scene, SCENE_TYPE
+from Scene.Scene import Scene, SCENE_TYPE
 from Objects.Actor import Actor
 
 
