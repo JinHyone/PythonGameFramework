@@ -21,14 +21,14 @@ class Texture:
 	def getSurface(self) -> Surface:
 		return self.surface
 
-	def getWidth(self):
+	def getWidth(self) -> int:
 		return self.width
 
-	def getHeight(self):
+	def getHeight(self) -> int:
 		return self.height
 
 	def setTransparent(self, color: Color | tuple[int, int, int]):
 		self.transparent = color
 
-	def getTransparent(self):
+	def getTransparent(self) -> Color | tuple[int, int, int]:
 		return self.transparent
