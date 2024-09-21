@@ -4,7 +4,7 @@ from Objects.Actor import Actor
 
 class GameScene(Scene):
 	def __init__(self):
-		super().__init__(SCENE_TYPE.DEV_SCENE)
+		super().__init__(SCENE_TYPE.GAME_SCENE)
 
 	def update(self):
 		super().update()

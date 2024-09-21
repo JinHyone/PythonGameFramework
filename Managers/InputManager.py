@@ -22,7 +22,7 @@ class InputManager:
 
 	# 일반적인 키는  'd' 'a' 꼴로 사용 가능하지만 쉬프트 등의 입력은 pygame.xxx로 사용해야함
 	def KeyPressed(self, key_type):
-		return self.key.get('d')
+		return self.key.get(key_type)
 
 	def update(self):
 		for ev in event.get():

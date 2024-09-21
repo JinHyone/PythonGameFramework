@@ -1,9 +1,10 @@
 from enum import Enum, auto
-from numpy import array, append, delete
+from numpy import array, insert, delete, where
 from numpy.typing import NDArray
+from pygame import Surface
 
 from Objects.Actor import Actor
-from Managers.TimeManager import TimeManager
+
 
 class SCENE_TYPE(Enum):
 	NONE       = auto()
@@ -16,7 +17,7 @@ class Scene:
 	type: SCENE_TYPE
 
 	def __init__(self, scene_type: SCENE_TYPE):
-		self.actors: NDArray[Actor] = array([])
+		self.actors: NDArray[Actor] = array([], dtype=Actor)
 		self.type: SCENE_TYPE = scene_type
 
 	def init(self):
@@ -26,12 +27,12 @@ class Scene:
 		for actor in self.actors:
 			actor.update()
 
-	def render(self, display):
+	def render(self, display: Surface):
 		for actor in self.actors:
 			actor.render(display)
 
 	def add_actor(self, actor: Actor):
-		self.actors = append(self.actors, actor)
+		self.actors = insert(self.actors, len(self.actors), [actor])
 
 	def remove_actor(self, actor: Actor):
-		delete(self.actors, actor)
+		delete(self.actors, where(self.actors == actor))
