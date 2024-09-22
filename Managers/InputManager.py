@@ -12,8 +12,7 @@ class InputManager:
 		self.key = dict()
 
 	@staticmethod
-	# GetInstance Method
-	def GI():
+	def GI():  # GetInstance Method
 		if InputManager.instance is None:
 			InputManager.instance = InputManager()
 			InputManager.instance.init()
