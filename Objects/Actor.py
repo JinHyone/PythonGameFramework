@@ -8,6 +8,8 @@ from typing import TYPE_CHECKING
 class ACTOR_TYPE(Enum):
 	BACKGROUND = auto(),
 	PLAYER = auto()
+
+
 # 더 추가 예정
 
 
@@ -19,11 +21,12 @@ if TYPE_CHECKING:
 class Actor:
 	pos: Vector3
 	type: ACTOR_TYPE
-	components: NDArray['Component'] = array([])
 
 	def __init__(self, pos: Vector3, actor_type: ACTOR_TYPE):
 		self.pos = pos
 		self.type = actor_type
+		from Component.Component import Component
+		self.components: NDArray[Component] = array([], dtype=Component)
 
 	def init(self):
 		for component in self.components:
@@ -38,8 +41,15 @@ class Actor:
 			component.render(display)
 
 	def addComponent(self, component: 'Component'):
+		component.init()
 		component.setOwner(self)
-		insert(self.components, component)
+		self.components = insert(self.components, len(self.components), [component])
 
 	def removeComponent(self, component: 'Component'):
 		delete(self.components, where(self.components == component))
+
+	def getPos(self) -> Vector3:
+		return self.pos
+
+	def setPos(self, pos: Vector3):
+		self.pos = pos

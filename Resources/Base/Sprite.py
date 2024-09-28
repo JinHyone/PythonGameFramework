@@ -1,4 +1,4 @@
-from pygame import Surface, Vector3
+from pygame import Surface, Vector2, Vector3, Color
 
 from Resources.Base.Texture import Texture
 from Resources.ResourceBase import ResourceBase
@@ -30,11 +30,11 @@ class Sprite(ResourceBase):
 	def getSurface(self) -> Surface:
 		return self.texture.getSurface()
 
-	def getTransparent(self):
+	def getTransparent(self) -> Color | tuple[int, int, int]:
 		return self.texture.getTransparent()
 
-	def getPos(self):
+	def getPos(self) -> Vector3:
 		return Vector3(self.x, self.y, 0)
 
-	def getSize(self):
-		return Vector3(self.cx, self.cy, 0)
+	def getSize(self) -> Vector2:
+		return Vector2(self.cx, self.cy)

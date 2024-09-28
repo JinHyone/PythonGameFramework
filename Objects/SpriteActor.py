@@ -1,4 +1,4 @@
-from pygame import Vector3, Surface, Rect
+from pygame import Vector2, Vector3, Surface, Rect
 from Resources.Base.Sprite import Sprite
 from Managers.SceneManager import SceneManager
 
@@ -24,7 +24,7 @@ class SpriteActor(Actor):
 			return
 
 		pos = self.pos
-		size: Vector3 = self.sprite.getSize()
+		size: Vector2 = self.sprite.getSize()
 		cameraPos: Vector3 = SceneManager.GI().getCameraPos()
 		windowSize = display.get_size()
 
