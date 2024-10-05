@@ -6,7 +6,7 @@ from Objects.Actor import Actor, ACTOR_TYPE
 
 
 class SpriteActor(Actor):
-	sprite: Sprite
+	sprite: Sprite = None
 
 	def __init__(self, pos: Vector3, actor_type: ACTOR_TYPE):
 		super().__init__(pos, actor_type)

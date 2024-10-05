@@ -3,6 +3,7 @@ from pygame.transform import scale
 from pygame.surface import Surface
 from pygame.color import Color
 from enum import Enum, auto
+from Resources.ResourceBase import ResourceBase
 
 
 class SCALING_FLAG(Enum):
@@ -10,11 +11,11 @@ class SCALING_FLAG(Enum):
 	ABSOLUTE = auto()
 
 
-class Texture:
-	surface: Surface
+class Texture(ResourceBase):
+	surface: Surface = None
 	transparent: Color | tuple[int, int, int] = (0, 255, 0)
-	width: int | float
-	height: int | float
+	width: int | float = 0
+	height: int | float = 0
 
 	def loadImage(self, path: str) -> 'Texture':
 		self.surface = load(path).convert_alpha()
@@ -28,10 +29,10 @@ class Texture:
 	def getSurface(self) -> Surface:
 		return self.surface
 
-	def getWidth(self) -> int:
+	def getWidth(self) -> int | float:
 		return self.width
 
-	def getHeight(self) -> int:
+	def getHeight(self) -> int | float:
 		return self.height
 
 	def setTransparent(self, color: Color | tuple[int, int, int]):

@@ -3,10 +3,11 @@ from Resources.Base.Flipbook import Flipbook
 from pygame import Surface, Vector3, Rect
 from Managers.TimeManager import TimeManager
 from Managers.SceneManager import SceneManager
+from Resources.Base.Texture import SCALING_FLAG
 
 
 class FlipbookActor(Actor):
-	flipbook: Flipbook
+	flipbook: Flipbook = None
 	sum_time: float = 0
 	idx: int = 0
 
@@ -46,11 +47,14 @@ class FlipbookActor(Actor):
 		info = self.flipbook.getFlipbookInfo()
 		pos = self.pos
 		cameraPos = SceneManager.GI().getCameraPos()
+		info.texture.scaling(2, 2, SCALING_FLAG.RATIO)
 
 		display.blit(info.texture.getSurface(),
 		             [pos.x - info.size.x / 2 - (cameraPos.x - windowSize[0] / 2),
 		              pos.y - info.size.y / 2 - (cameraPos.y - windowSize[1] / 2)],
-		             Rect((info.start + self.idx) * info.size.x, info.line * info.size.y, info.size.x, info.size.y))
+		             Rect((info.start + self.idx) * info.size.x * 2, info.line * info.size.y * 2, info.size.x * 2, info.size.y * 2))
+
+		info.texture.scaling(0.5, 0.5, SCALING_FLAG.RATIO)
 
 	def setFlipbook(self, flipbook: Flipbook):
 		self.flipbook = flipbook
